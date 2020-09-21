@@ -1,4 +1,4 @@
-package br.com.github.nimbus21;
+package br.com.nimbus21.sweetlyrics;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
