@@ -1,10 +1,16 @@
 package br.com.nimbus21.sweetlyrics.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -21,9 +27,17 @@ public class Album {
 	@Column(name = "nm_album")
 	private String nome;
 	
-	@Column(name = "fl_foto_album")
+	@Column(name = "fl_foto_album", nullable = true)
 	private String fotoLink;
 
+	@ManyToOne
+	@JoinColumn(name = "cd_artista", nullable = true)
+	//É false, tá true apenas para teste
+	private Artista artista;
+	
+	@ManyToMany(mappedBy = "albuns", cascade = CascadeType.ALL)
+	private List<Musica> musicas;
+	
 	public Album() {
 
 	}
@@ -56,5 +70,25 @@ public class Album {
 	public void setFotoLink(String fotoLink) {
 		this.fotoLink = fotoLink;
 	}
+
+	public Artista getArtista() {
+		return artista;
+	}
+
+	public void setArtista(Artista artista) {
+		this.artista = artista;
+	}
+
+	public List<Musica> getMusicas() {
+		return musicas;
+	}
+
+	public void setMusicas(List<Musica> musicas) {
+		this.musicas = musicas;
+	}
 	
+	public void addMusica(Musica musica) {
+		musica.getAlbuns().add(this);
+		musicas.add(musica);
+	}
 }

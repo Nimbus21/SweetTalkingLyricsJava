@@ -49,6 +49,26 @@
 			</p>
 			<p>Vestibulum nec hendrerit leo. Suspendisse vel iaculis quam, in sagittis felis. Integer sed justo porttitor, tristique nibh vel, placerat urna. Curabitur vitae nisl lectus. Mauris pharetra tempor ipsum, in molestie felis dictum vel. Pellentesque consequat at lectus eget fermentum. Vestibulum et massa odio. Sed laoreet aliquet luctus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed ut luctus nisl. Suspendisse volutpat in nisl vitae aliquet. Ut nec tellus justo. Aenean efficitur, urna ac suscipit egestas, quam urna dictum sapien, ac bibendum odio risus a magna. Mauris eu arcu diam. Duis pulvinar pellentesque sapien ut interdum. Nulla aliquam sit amet quam id gravida.
 			</p>
+			<table>
+				<thead>
+					<tr>
+						<th>Artista</th>
+						<th>Album</th>
+						<th>Musica</th>
+						<th>Lyrics by</th>
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:each="letra: ${letrasList}">
+						<tr>
+							<td th:text="${letra.musica.albuns[0].artista.nome}"></td>
+							<td th:text="${letra.musica.albuns[0].nome}"></td>
+							<td th:text="${letra.musica.nome}"></td>
+							<td th:text="${letra.descricao}"></td>
+						</tr>
+					</th:block>
+				</tbody>
+			</table>
 		</div>
 	</div>
 

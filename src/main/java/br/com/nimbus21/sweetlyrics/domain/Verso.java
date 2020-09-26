@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -23,6 +25,11 @@ public class Verso {
 	
 	@Column(name = "tx_verso")
 	private String texto;
+	
+	@ManyToOne
+	@JoinColumn(name = "cd_letra", nullable = true)
+	//É false, tá true pra teste
+	private Letra letra;
 
 	public Verso() {
 
@@ -55,6 +62,14 @@ public class Verso {
 
 	public void setTexto(String texto) {
 		this.texto = texto;
+	}
+
+	public Letra getLetra() {
+		return letra;
+	}
+
+	public void setLetra(Letra letra) {
+		this.letra = letra;
 	}
 	
 }
